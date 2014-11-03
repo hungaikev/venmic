@@ -1,0 +1,52 @@
+{% load static %} <!-- New line -->
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]>    <html class="no-js iem7"> <![endif]-->
+<!--[if (gt IEMobile 7)|!(IEMobile)]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %} VENMIC  {% endblock %}</title>
+        <meta name="description" content="">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="cleartype" content="on">
+
+        <link href="{% static "task/css/normalize.css" %} " rel="stylesheet" type="text/css">
+    <link href="{% static "task/css/main.css" %} " rel="stylesheet" type="text/css">
+     <script src="{% static "task/js/vendor/modernizr-2.6.2.min.js"  %}"></script>
+
+    </head>
+    <body>
+
+        <header>
+            <nav>
+                <ul>
+                    <li class="logo">
+                        <a href="/"><img src="{% static "task/img/logo.png" %}"alt="Logo"></a>
+                    </li>
+                    <li>
+                        <a href="">Clients</a>
+                    </li>
+                    <li>
+                        <a href="">Properties</a>
+                    </li>
+                    <li>
+                        <a href="" class="active">Tasks</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+         {% block content %}
+
+
+    {% endblock %}   
+
+    <script src="{% static "task/js/vendor/jquery-2.0.3.min.js" %}" ></script>
+    <script src="{% static "task/js/helper.js" %}" ></script>
+    <script src="{% static "task/js/main.js" %}" ></script>
+        
+       
+
+    </body>
+</html>

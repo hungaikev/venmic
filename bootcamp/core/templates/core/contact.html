@@ -1,0 +1,48 @@
+{% extends 'base3.html' %}
+{% block title  %} Services | Contact {% endblock %}
+
+{% block  content %}
+{% load crispy_forms_tags %}
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+<div class="large-12 columns medium-12 columns venmic-contact-us">
+				<div class="large-12 columns medium-12 columns section-header">
+					<div class="overlay"></div>
+					<h2>Contact Us</h2>
+				</div>
+				<div class="large-12 columns medium-12 columns vs-contact">
+					<div class="row">
+						<div class="large-6 columns medium-6 columns vs-contact-form">
+							<form id="contact-form" method="POST" action="">
+								<label class="error" for="contact_name"></label>
+								<input type="text" placeholder="Name" id="contact_name" name="contact_name" />
+								<label class="error" for="contact_email"></label>
+								<input type="text" placeholder="E-mail" id="contact_email" name="contact_email" />
+								<input type="text" placeholder="Subject" id="contact_subject" name="contact_subject" />
+								<label class="error" for="contact_message"></label>
+								<textarea placeholder="Your Message here..." id="contact_message" name="contact_message" ></textarea>
+								<button type="submit">Send</button>
+							</form>
+						</div>
+						<div class="large-6 columns medium-6 columns vs-contact-info">
+							<h4>Email</h4>
+							<p>info@venmicconsultants.com</p>
+							<p>info.kerugoya@venmicconsultants.com</p>
+							<h4>Phone</h4>
+							<p>+254703584695</p>
+							
+							<h4>Location</h4>
+							<p>3rd Floor, Deresh Towers</p>
+							<p>Murang'a Road, Nairobi,Kenya</p>
+							<p>ALSO</p>
+							<p>3rd Floor Ushirika House, Main Street Kerugoya</p>
+						</div>
+					</div>
+				</div>
+			</div>	
+		</div>	
+		{% endblock %}

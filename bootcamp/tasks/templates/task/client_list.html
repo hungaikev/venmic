@@ -1,0 +1,23 @@
+{% extends "base2.html" %}
+{% block title %}Venmic Consultants : Client List{% endblock %}
+{% block content %}
+
+
+     <div class="main wrapper cf">
+            <div class="content">
+                <h1>Clients <img class="ajax-indicator hidden" src="img/ajax-loader.gif"></h1>
+                <hr>
+                <a href="/tasks/newclient" class="button no-fill"><span>+</span>Add Client</a>
+                <ul class="clients-container">
+                </ul>
+            </div>
+        </div>      
+        
+        
+        
+        <script>
+            $(document).ready(function(){
+                getClients('http://127.0.0.1:8003/api/clients/?format=json');
+            });
+        </script>
+{% endblock %}

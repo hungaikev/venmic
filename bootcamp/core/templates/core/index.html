@@ -1,0 +1,151 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta property="og:title" content="Venmic Consultants" /> 
+		<meta property="og:description" content="" /> 
+		<meta property="og:url" content="http://www.venmic.com/">
+		<meta property="og:type" content="website">
+		<meta property="og:image" content="">
+		<title>Venmic | Welcome</title>
+		<link rel="shortcut icon" href="" />
+		<link rel="stylesheet" href="{{ STATIC_URL }}assets/css/foundation.css" />
+		<link rel="stylesheet" href="{{ STATIC_URL }}assets/font-awesome/css/font-awesome.css" />
+		<link rel="stylesheet" href="{{ STATIC_URL }}assets/js/slick-master/slick/slick.css" />
+		<link rel="stylesheet" href="{{ STATIC_URL }}assets/js/pace/themes/pace-theme-center-radar.css" />
+		<link rel="stylesheet" href="{{ STATIC_URL }}assets/css/venmic.css" />
+		<script src="{{ STATIC_URL }}assets/js/vendor/jquery.js"></script>
+		<script src="{{ STATIC_URL }}assets/js/vendor/modernizr.js"></script>
+	</head>
+	<body>
+		<div id="loader-div" class="loader-div"></div>
+		<div class="full-size venmic-landing-container">
+			<div id="venmic-header" class="large-12 columns medium-12 columns fixed venmic-header">
+				<a href="/"><img src="{{ STATIC_URL }}assets/img/logo.png" height="80" width="145"></a>
+				<i id="nav-bar-small" class="fa fa-bars show-for-small-only nav-bar-small"></i>
+				<ul class="show-for-medium-up nav-options">
+					<li><a class="nav-link nav-link-active" href="#home">Home</a></li>
+					<li><a class="nav-link" href="/about">About Us</a></li>
+					<li><a class="nav-link" href="/services">Services&nbsp;|</a><i id="services-sub-nav-trigger" class="fa fa-chevron-down services-arrow"></i></li>
+					<ul id="services-sub-nav" class="services-sub-nav">
+						<li><a id="services-valuation" href="/valuation" class="nav-services hide" slide-id="1">Valuation</a></li>
+						<li><a id="services-s-letting" href="/sales" class="nav-services hide" slide-id="2">Sales &amp; Letting</a></li>
+						<li><a id="services-pf-management" href="/properties" class="nav-services hide" slide-id="3">Property &amp; Facility Management</a></li>	
+					</ul>
+					<li><a href="/login">Log In</a></li>
+					<li><a class="nav-link" href="/contact">Contact Us</a></li>	
+				</ul>
+				<ul id="nav-ul-small" class="show-for-small-only nav-options-small hide">
+					<li><a class="nav-link" href="#home">Home</a></li>
+					<li><a class="nav-link" href="/about">About Us</a></li>
+					<li><a class="nav-link" href="/services">Services</a></li>
+					<li><a class="small-login" href="/login">Log In</a></li>
+					<li><a class="nav-link" href="/contact">Contact Us</a></li>
+				</ul>
+			</div>
+			<div id="home" class="large-12 columns medium-12 columns venmic-landing-images">
+				<ul class="venmic-landing-large">
+					<li class="show-for-medium-up"><span><!-- These spans are used for setting --></span></li>
+    				<li class="show-for-medium-up"><span><!-- --></span></li>
+				</ul>
+				<ul class="venmic-landing-small">
+    				<li class="show-for-small-only"><span><!-- --></span></li>
+    				<li class="show-for-small-only"><span><!-- --></span></li>
+				</ul>
+				<div class="large-9 large-centered columns medium-9 medium-centered columns show-for-medium-up venmic-landing-info">
+					<h2>Venmic</h2>
+					<hr>
+					<p>Quality <i class="fa fa-circle"></i> Reliable <i class="fa fa-circle"></i> Services</p>
+				</div>
+				<div class="small-12 columns show-for-small-only venmic-landing-info-small">
+					<h2>Venmic</h2>
+					<hr>
+					<p>Quality</p> 
+					<p>Reliable</p> 
+					<p>Services</p>
+				</div>	
+			</div>
+		</div>
+		<div class="row">
+			<div class="large-12 columns medium-12 columns about-us-indicator" id="about-us">
+				<!-- This div is used for padding -->
+			</div>
+			
+			<div class="large-12 columns medium-12 columns contact-us-indicator" id="contact-us">
+				<!-- This div is used for padding -->
+			</div>
+			<div class="large-12 columns medium-12 columns venmic-contact-us">
+				<div class="large-12 columns medium-12 columns section-header">
+					<div class="overlay"></div>
+					<h2>Contact Us</h2>
+				</div>
+				<div class="large-12 columns medium-12 columns vs-contact">
+					<div class="row">
+						<div class="large-6 columns medium-6 columns vs-contact-form">
+							<form id="contact-form" method="POST" action="">
+								<label class="error" for="contact_name"></label>
+								<input type="text" placeholder="Name" id="contact_name" name="contact_name" />
+								<label class="error" for="contact_email"></label>
+								<input type="text" placeholder="E-mail" id="contact_email" name="contact_email" />
+								<input type="text" placeholder="Subject" id="contact_subject" name="contact_subject" />
+								<label class="error" for="contact_message"></label>
+								<textarea placeholder="Your Message here..." id="contact_message" name="contact_message" ></textarea>
+								<button type="submit">Send</button>
+							</form>
+						</div>
+						<div class="large-6 columns medium-6 columns vs-contact-info">
+							<h4>Email</h4>
+							<p>info@venmicconsultants.com</p>
+							<h4>Phone</h4>
+							<p>+254721280294</p>
+							<p>+254723781960</p>
+							<p>+254734620489</p>
+							<h4>Location</h4>
+							<p>Jubilee Insuarance Plaza, 5th floor</p>
+						</div>
+					</div>
+				</div>
+			</div>	
+		</div>	
+		<div class="full-size venmic-footer-banner">
+			<div class="row">
+				<div class="large-12 columns medium-12 columns venmic-footer">
+					<div class="large-4 columns medium-4 columns">
+						<ul class="contact">
+							<li><i class="fa fa-road"></i>&nbsp;Jubilee Insuarance Plaza, 5th floor</li>
+							<li><i class="fa fa-archive"></i>&nbsp;P.O.Box 10421-00200 Nairobi, Kenya</li>
+							<li><i class="fa fa-phone"></i>&nbsp;+254721280294</li>
+							<li><i class="fa fa-phone"></i>&nbsp;+254723781960</li>
+							<li><i class="fa fa-phone"></i>&nbsp;+254734620489</li>
+							<li><i class="fa fa-envelope"></i>&nbsp;info@venmicconsultants.com</li>
+						</ul>
+					</div>	
+					<div class="large-4 columns medium-4 columns">
+						<ul class="creds">
+							<li>Venmic Consultants &copy; 2014</li>
+						</ul>
+					</div>
+					<div class="large-4 columns medium-4 columns">	
+						<p class="social">Keep in touch with us on social media</p>
+						<ul class="social">
+							<li><i class="fa fa-facebook"></i></li>
+							<li><i class="fa fa-google-plus"></i></li>
+							<li><i class="fa fa-twitter"></i></li></li>
+						</ul>
+					</div>
+				</div>		
+			</div>	
+		</div>	
+		<script src="{{ STATIC_URL }}assets/js/foundation.min.js"></script>
+		<script src="{{ STATIC_URL }}assets/js/jquery-validation/dist/jquery.validate.min.js"></script>
+		<script src="{{ STATIC_URL }}assets/js/slick-master/slick/slick.min.js"></script>
+		<script src="{{ STATIC_URL }}assets/js/classie/classie.js"></script>
+		<script src="{{ STATIC_URL }}assets/js/jquery-ui/jquery-ui.min.js"></script>
+		<script src="{{ STATIC_URL }}assets/js/pace/pace.min.js"></script>
+		<script src="{{ STATIC_URL }}assets/js/venmic.js"></script>
+		<script>
+			$(document).foundation();
+		</script>
+	</body>
+</html>	

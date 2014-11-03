@@ -1,0 +1,43 @@
+{% extends "base2.html" %}
+{% block title  %} Add Property {% endblock %}
+
+{% block  content %}
+{% load crispy_forms_tags %}
+
+<div class="main wrapper cf">
+            <div class="content">
+                <h1>Properties <img class="ajax-indicator hidden" src="img/ajax-loader.gif"></h1>
+                <hr>
+              
+                <ul class="tasks-container">
+                </ul>
+
+                <div class="col-lg-8 col-lg-offset-2">
+                	<form action= "{% url "newproperty" %}" method = "POST">
+	<ul>
+		{% csrf_token %}
+		{{ form| crispy}}
+
+	</ul>
+	<div class="row">
+		 <br>
+                            <div class="form-group col-xs-12">
+
+	<button type = "submit" class ="btn btn-lg btn-success" >Save</button>
+</form>
+                  
+                        
+                               
+                            </div>
+                        <!-- </div> -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+{% endblock %}

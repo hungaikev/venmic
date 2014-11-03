@@ -1,0 +1,31 @@
+{% extends "base2.html" %}
+{% block title %}Venmic Consultants : Report List{% endblock %}
+{% block content %}
+
+
+<section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                   <h1>REPORTS</h1>
+                    <hr class="star-primary">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                	<ul>
+	{% for valuationreport in object_list %}
+	<li>{{ valuationreport }}</li>
+	{% endfor %}
+</ul>
+	<div class="row">
+		 <br>
+                       
+                  
+                        
+                     
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

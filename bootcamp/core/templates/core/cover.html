@@ -1,0 +1,107 @@
+{% extends 'base1.html' %}
+{% load i18n %}
+
+{% block head %}
+  <link href="{{ STATIC_URL }}assets/css/foundation.css" rel="stylesheet">
+  <link href="{{ STATIC_URL }}assets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="{{ STATIC_URL }}assets/css/venmic.css" rel="stylesheet">
+{% endblock head %}
+
+{% block body %}
+  <div class="full-size venmic-landing-container">
+    <div id="venmic-header" class="large-12 columns medium-12 columns fixed venmic-header active">
+      <a href="/"><img src="{{ STATIC_URL }}assets/img/logo.png" height="80" width="145"></a>
+      <i id="nav-bar-small" class="fa fa-bars show-for-small-only"></i>
+      <ul class="show-for-medium-up nav-options">
+        <li><a href="/" class="nav-link">Home</a></li>
+        <li><a href="/#about-us" class="nav-link">About Us</a></li>
+        <li><a href="/#services" class="nav-link">Services</a></li>
+        <li><a href="/login" class="nav-link-active">Log In</a></li>
+        <li><a href="/#contact-us" class="nav-link">Contact Us</a></li>
+      </ul>
+      <ul id="nav-ul-small" class="show-for-small-only nav-options-small hide">
+        <li><a href="/" class="nav-link">Home</a></li>
+        <li><a href="/#about-us" class="nav-link">About Us</a></li>
+        <li><a href="/#services" class="nav-link">Services</a></li>
+        <li><a href="/login" class="nav-link-active">Log In</a></li>
+        <li><a href="/#contact-us" class="nav-link">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="large-4 large-centered columns medium-4 medium-centered columns venmic-login">
+    <div class="large-12 columns medium-12 columns error-div">
+      {% if form.non_field_errors %}
+        {% for error in form.non_field_errors %}
+          <div class="alert alert-danger alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            {{ error }}
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+    <div class="large-12 columns medium-12 columns section-header">
+      <div class="overlay"></div>
+      <h2>{% trans 'Log in' %}</h2>
+    </div>
+    <div class="large-12 columns medium-12 columns vl-login">
+      <form method="post" id="venmic-login" action="{% url 'login' %}" role="form" class="vl-login-form">
+        {% csrf_token %}
+        <div class="form-group{% if form.username.errors %} has-error{% endif %}">
+          <label for="username" class="error"></label>
+          <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+          {% for error in form.username.errors %}
+            <label class="control-label">{{ error }}</label>
+          {% endfor %}
+        </div>
+        <div class="form-group{% if form.password.errors %} has-error{% endif %}">
+          <label for="password" class="error"></label>
+          <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+          {% for error in form.password.errors %}
+            <label class="control-label">{{ error }}</label>
+          {% endfor %}
+        </div>
+        <div class="form-group">
+          <button type="submit">{% trans 'Log in' %}</button>
+          <a href="#" class="forgot-pass-link">Forgot your password?</a> 
+        </div>
+      </form>
+    </div>
+  </div>
+  <!--
+  <div class="full-size venmic-footer-banner">
+    <div class="row">
+      <div class="large-12 columns medium-12 columns venmic-footer">
+        <div class="large-4 columns medium-4 columns">
+          <ul class="contact">
+            <li><i class="fa fa-road"></i>&nbsp;Jubilee Insuarance Plaza, 5th floor</li>
+            <li><i class="fa fa-archive"></i>&nbsp;P.O.Box 10421-00200 Nairobi, Kenya</li>
+            <li><i class="fa fa-phone"></i>&nbsp;+254721280294</li>
+            <li><i class="fa fa-phone"></i>&nbsp;+254723781960</li>
+            <li><i class="fa fa-phone"></i>&nbsp;+254734620489</li>
+            <li><i class="fa fa-envelope"></i>&nbsp;info@venmicconsultants.com</li>
+          </ul>
+        </div>  
+        <div class="large-4 columns medium-4 columns">
+          <ul class="creds">
+            <li>Venmic Consultants &copy; 2014</li>
+          </ul>
+        </div>
+        <div class="large-4 columns medium-4 columns">  
+          <p class="social">Keep in touch with us on social media</p>
+          <ul class="social">
+            <li><i class="fa fa-facebook"></i></li>
+            <li><i class="fa fa-google-plus"></i></li>
+            <li><i class="fa fa-twitter"></i></li></li>
+          </ul>
+        </div>
+      </div>    
+    </div>  
+  </div>-->
+  <script src="{{ STATIC_URL }}assets/js/foundation.min.js"></script>
+  <script src="{{ STATIC_URL }}assets/js/jquery-validation/dist/jquery.validate.min.js"></script>
+  <script src="{{ STATIC_URL }}assets/js/classie/classie.js"></script>
+  <script src="{{ STATIC_URL }}assets/js/venmic-login.js"></script>
+  <script>
+      $(document).foundation();
+  </script>
+{% endblock body %}

@@ -1,0 +1,21 @@
+{% extends "base2.html" %}
+{% block title %}Venmic Consultants : Property List{% endblock %}
+{% block content %}
+
+
+  <div class="main wrapper cf">
+            <div class="content">
+                <h1>Properties <img class="ajax-indicator hidden" src="img/ajax-loader.gif"></h1>
+                <hr>
+                <a href="/tasks/newproperty" class="button no-fill"><span>+</span>Add Property</a>
+                <ul class="properties-container">
+                </ul>
+            </div>
+        </div>      
+        
+        <script>
+            $(document).ready(function(){
+                getProperties('http://127.0.0.1:8003/api/properties/?format=json');
+            });
+        </script>
+{% endblock %}
