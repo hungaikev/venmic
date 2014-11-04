@@ -26,7 +26,7 @@ urlpatterns = patterns('',
 	### Property urls
 
 	url(r'^newproperty/', PropertyCreate.as_view(), name = 'newproperty',),
-	url(r'^properties/', PropertyList.as_view(), name = 'properties',),
+	url(r'^all_properties/', PropertyList.as_view(), name = 'all_properties',),
 	url(r'^propertyupdate/(?P<pk>\d+)$', PropertyUpdate.as_view(), name = 'propertyupdate',),
 	url(r'^property(?P<pk>\d+)$/', PropertyDetail.as_view(), name = 'property',),
 

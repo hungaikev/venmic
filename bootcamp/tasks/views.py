@@ -116,7 +116,7 @@ class PropertyList(LoggedInMixin, ListView):
 	model = Property
 	template_name = "task/property_list.html"
 	allow_empty = True
-	context_object_name = "properties"
+	context_object_name = "all_properties"
 
 	def get_queryset(self):
 		return Property.objects.all()[:20]
@@ -125,7 +125,7 @@ class PropertyList(LoggedInMixin, ListView):
 class PropertyDetail(LoggedInMixin, DetailView):
 	model = Property
 	template_name = "task/property_detail.html"
-	context_object_name = "properti"
+	context_object_name = "all_properties"
 
 	def get_queryset(self):
 		return Property.objects.all()
@@ -139,7 +139,7 @@ class PropertyCreate(LoggedInMixin, CreateView):
 	template_name = "task/add_property.html"
 
 	def get_success_url(self):
-		return reverse('properties')
+		return reverse('all_properties')
 
 
 class PropertyUpdate(LoggedInMixin, UpdateView):
@@ -148,7 +148,7 @@ class PropertyUpdate(LoggedInMixin, UpdateView):
 	template_name = "tasks/editproperty.html"
 
 	def get_success_url(self):
-		return reverse('properties')
+		return reverse('all_properties')
 
 
 """ValuationReport Views """
