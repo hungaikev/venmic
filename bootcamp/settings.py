@@ -15,7 +15,7 @@ import dj_database_url
 SECRET_KEY = '805g&ncc+v@g0q7-o9m2@1jftvkan!6qz4)t-l63tf_!lp+t+u'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 DATABASES = {
@@ -102,7 +102,7 @@ LOCALE_PATHS = (PROJECT_DIR.child('locale'), )
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
-STATIC_ROOT = ("/home/hungai/Projects/static")
+STATIC_ROOT = ("/root/www/static")
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
