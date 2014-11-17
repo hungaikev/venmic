@@ -23,32 +23,45 @@ $(document).ready(function () {
         });
     };
 
-    //Get Tasks
+  //Get Tasks
     getTasks = function (url) {
         //Define any data to be sent along here
         var data = '', request = requestObject(url, data);
         
         request.success(function (response) {
             $.each(response.results, function displayTasks(index, task) {
+                            
                 var li = '<li><h2 class="title">' + task.title + '</h2>';
                 li += '<div class="dates">';
                 li += '<span class="start-date"><span>Start Date: </span>' + task.start_date + '</span>';
                 li += '<span class="end-date"><span>End Date: </span>' + task.end_date + '</span>';
                 li += '<div class="date-closed"><span>Date Closed: </span>' + task.date_closed + '</span></div>';
                 li += '<p class="description">' + task.description + '</p>';
-                    
-                var client = getNestedJSON(task.client);
-                li += '<div class="property-details-wrapper"><span>Client Name: </span><a href="" class="client-name" data-url="' + task.client + '">' + client.name + '</a>';
-
-                var property = getNestedJSON(task.property_details);
-                li += '<span>Property Address: </span><a href="" class="property-details" data-url="' + task.property_details + '" data-type="property">' + property.address + '</a></div>';
-
-                var user = getNestedJSON(task.assign_to);
-                li += '<h3 class="assign-to"><span>Assigned To: </span><a href="" data-url="' + task.assign_to + '" data-type="user">' + user.username + '</a></li>';
-
                 li += '</li>';
                 
                 $('.tasks-container').append(li);
+                var sideLoadedContent = '';
+                
+                getNestedJSON(baseUrl + '/clients/' + task.client).success(function(response) {
+                    window.sideLoadedContent = '<div class="property-details-wrapper"><span>Client Name: </span><a href="" class="client-name" data-url="' + baseUrl + '/clients/'+ task.client + '">' + response.name + '</a>'
+                });
+                
+                getNestedJSON(baseUrl + '/properties/' + task.property_details).success(function(response) {
+                
+                    window.sideLoadedContent += '<span>Property Address: </span><a href="" class="property-details" data-url="' + baseUrl + '/properties/' + task.property_details + '" data-type="property">' + response.address + '</a></div>';
+
+                    var user = getNestedJSON(baseUrl + '/users/' + task.assign_to).success(function(response){
+
+                        window.sideLoadedContent += '<h3 class="assign-to"><span>Assigned To: </span><a href="" data-url="' +baseUrl + '/users/' + task.assign_to + '" data-type="user">' + response.username + '</a>';
+                        
+                        $(window.sideLoadedContent).insertAfter('.tasks-container p.description');
+                
+                    })
+                
+                
+                })
+                
+                
             });
         });
         
@@ -58,6 +71,7 @@ $(document).ready(function () {
             console.log(jqXHR, "textStatus: " + textStatus, "statusText: " + statusText);
         });
     };
+    
     
     //Get Properites
     getProperties = function (url) {
@@ -118,16 +132,7 @@ $(document).ready(function () {
         var data = '';
         var request = requestObject(url, data, "json");
         
-        request.success(function (response) {
-           return response; 
-        });
-
-        //Log errors to the console
-        request.fail(function (jqXHR, textStatus, statusText) {
-            console.log("jqXHR: ");
-            console.log(jqXHR, "textStatus: " + textStatus, "statusText: " + statusText);
-        });
-        
+        return request;
     };
     
     

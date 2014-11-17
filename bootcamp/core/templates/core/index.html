@@ -25,7 +25,7 @@
 				<a href="/"><img src="{{ STATIC_URL }}assets/img/logo.png" height="80" width="145"></a>
 				<i id="nav-bar-small" class="fa fa-bars show-for-small-only nav-bar-small"></i>
 				<ul class="show-for-medium-up nav-options">
-					<li><a class="nav-link nav-link-active" href="#home">Home</a></li>
+					<li><a class="nav-link nav-link-active" href="/">Home</a></li>
 					<li><a class="nav-link" href="/about">About Us</a></li>
 					<li><a class="nav-link" href="/services">Services&nbsp;|</a><i id="services-sub-nav-trigger" class="fa fa-chevron-down services-arrow"></i></li>
 					<ul id="services-sub-nav" class="services-sub-nav">
@@ -37,7 +37,7 @@
 					<li><a class="nav-link" href="/contact">Contact Us</a></li>	
 				</ul>
 				<ul id="nav-ul-small" class="show-for-small-only nav-options-small hide">
-					<li><a class="nav-link" href="#home">Home</a></li>
+					<li><a class="nav-link" href="/">Home</a></li>
 					<li><a class="nav-link" href="/about">About Us</a></li>
 					<li><a class="nav-link" href="/services">Services</a></li>
 					<li><a class="small-login" href="/login">Log In</a></li>
@@ -68,13 +68,6 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="large-12 columns medium-12 columns about-us-indicator" id="about-us">
-				<!-- This div is used for padding -->
-			</div>
-			
-			<div class="large-12 columns medium-12 columns contact-us-indicator" id="contact-us">
-				<!-- This div is used for padding -->
-			</div>
 			<div class="large-12 columns medium-12 columns venmic-contact-us">
 				<div class="large-12 columns medium-12 columns section-header">
 					<div class="overlay"></div>
@@ -97,12 +90,15 @@
 						<div class="large-6 columns medium-6 columns vs-contact-info">
 							<h4>Email</h4>
 							<p>info@venmicconsultants.com</p>
+							<p>info.kerugoya@venmicconsultants.com</p>
 							<h4>Phone</h4>
-							<p>+254721280294</p>
-							<p>+254723781960</p>
-							<p>+254734620489</p>
+							<p>+254703584695</p>
+							
 							<h4>Location</h4>
-							<p>Jubilee Insuarance Plaza, 5th floor</p>
+							<p>3rd Floor, Deresh Towers</p>
+							<p>Murang'a Road, Nairobi,Kenya</p>
+							<p>ALSO</p>
+							<p>3rd Floor Ushirika House, Main Street Kerugoya</p>
 						</div>
 					</div>
 				</div>
@@ -113,12 +109,12 @@
 				<div class="large-12 columns medium-12 columns venmic-footer">
 					<div class="large-4 columns medium-4 columns">
 						<ul class="contact">
-							<li><i class="fa fa-road"></i>&nbsp;Jubilee Insuarance Plaza, 5th floor</li>
+							<li><i class="fa fa-road"></i>&nbsp;3rd Floor, Deresh Towers, Murang'a Road</li>
 							<li><i class="fa fa-archive"></i>&nbsp;P.O.Box 10421-00200 Nairobi, Kenya</li>
-							<li><i class="fa fa-phone"></i>&nbsp;+254721280294</li>
-							<li><i class="fa fa-phone"></i>&nbsp;+254723781960</li>
-							<li><i class="fa fa-phone"></i>&nbsp;+254734620489</li>
+							<li><i class="fa fa-phone"></i>&nbsp;+254703584695</li>
+							
 							<li><i class="fa fa-envelope"></i>&nbsp;info@venmicconsultants.com</li>
+							<li><i class="fa fa-envelope"></i>&nbsp;info.kerugoya@venmicconsultants.com</li>
 						</ul>
 					</div>	
 					<div class="large-4 columns medium-4 columns">
@@ -126,7 +122,7 @@
 							<li>Venmic Consultants &copy; 2014</li>
 						</ul>
 					</div>
-					<div class="large-4 columns medium-4 columns">	
+					<div class="large-4 columns medium-4 columns">  
 						<p class="social">Keep in touch with us on social media</p>
 						<ul class="social">
 							<li><i class="fa fa-facebook"></i></li>
@@ -134,18 +130,16 @@
 							<li><i class="fa fa-twitter"></i></li></li>
 						</ul>
 					</div>
-				</div>		
-			</div>	
-		</div>	
+				</div>    
+			</div>  
+		</div>
 		<script src="{{ STATIC_URL }}assets/js/foundation.min.js"></script>
 		<script src="{{ STATIC_URL }}assets/js/jquery-validation/dist/jquery.validate.min.js"></script>
-		<script src="{{ STATIC_URL }}assets/js/slick-master/slick/slick.min.js"></script>
 		<script src="{{ STATIC_URL }}assets/js/classie/classie.js"></script>
-		<script src="{{ STATIC_URL }}assets/js/jquery-ui/jquery-ui.min.js"></script>
 		<script src="{{ STATIC_URL }}assets/js/pace/pace.min.js"></script>
-		<script src="{{ STATIC_URL }}assets/js/venmic.js"></script>
+		<script src="{{ STATIC_URL }}assets/js/venmic-login.js"></script>
 		<script>
 			$(document).foundation();
 		</script>
 	</body>
-</html>	
+</html>		
