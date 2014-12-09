@@ -3,13 +3,8 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-
-
-
-
 class Client(models.Model):
     name = models.CharField("Full Names ", max_length=200)
-    email = models.EmailField("Email", max_length=100)
     phone = models.CharField("Phone Number", max_length=100)
     
 
@@ -49,10 +44,18 @@ class Task(models.Model):
     description = models.TextField(max_length=1000, blank=True)
     start_date = models.DateField("When the Assignment Begins", help_text='Enter the date in this format yyyy-mm-dd')
     end_date = models.DateField("Expected Finish Date",help_text='Enter the date in this format yyyy-mm-dd')
-    date_closed = models.DateField(blank=True, null=True,help_text='Enter the date in this format yyyy-mm-dd')
     client = models.ForeignKey(Client)
     property_details = models.ForeignKey(Property)
     assign_to = models.ForeignKey(User, related_name='+')
+
+
+
+    def was_published_recently(self):
+        return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
+    was_published_recently.admin_order_field = 'pub_date'
+    was_published_recently.boolean = True
+    was_published_recently.short_description = 'Published recently?'
+
 
     def __unicode__(self):
         return "%s has been assigned to %s" % (self.title,self.assign_to.username)

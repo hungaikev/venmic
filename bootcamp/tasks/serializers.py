@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import serializers
 from .models import Client, Property,Task,ValuationReport
+from rest_framework import generics
 
 
 
@@ -21,7 +22,7 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
 class ClientSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Client
-		fields = ('id','name','email','phone')
+		fields = ('id','name','phone')
 
 
 
@@ -43,7 +44,7 @@ class TaskSerializer(serializers.ModelSerializer):
 	assign_to = UserSerializer
 	class Meta:
 		model = Task
-		fields = ('id','title','description','start_date','end_date','date_closed','client','property_details','assign_to')
+		fields = ('id','title','description','start_date','end_date','client','property_details','assign_to')
 
 
 

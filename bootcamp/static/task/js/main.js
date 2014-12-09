@@ -29,37 +29,44 @@ $(document).ready(function () {
         var data = '', request = requestObject(url, data);
         
         request.success(function (response) {
+        window.res = response;
             $.each(response.results, function displayTasks(index, task) {
+
+                console.log(index)
                             
                 var li = '<li><h2 class="title">' + task.title + '</h2>';
                 li += '<div class="dates">';
                 li += '<span class="start-date"><span>Start Date: </span>' + task.start_date + '</span>';
                 li += '<span class="end-date"><span>End Date: </span>' + task.end_date + '</span>';
-                li += '<div class="date-closed"><span>Date Closed: </span>' + task.date_closed + '</span></div>';
+                // li += '<div class="date-closed"><span>Date Closed: </span>' + task.date_closed + '</span></div>';
                 li += '<p class="description">' + task.description + '</p>';
-                li += '</li>';
+                window[index] = [];
                 
-                $('.tasks-container').append(li);
-                var sideLoadedContent = '';
+                //Get client
+                getNestedJSON(baseUrl + '/clients/' + task.client + '?format=json').success(function(response) {
+                    window[index]['clientDetails'] = '<div class="property-details-wrapper"><span>Client Name: </span><a href="" class="client-name" data-url="' + baseUrl + '/clients/'+ task.client + '?format=json" data-type="client">' + response.name + '</a>';
                 
-                getNestedJSON(baseUrl + '/clients/' + task.client).success(function(response) {
-                    window.sideLoadedContent = '<div class="property-details-wrapper"><span>Client Name: </span><a href="" class="client-name" data-url="' + baseUrl + '/clients/'+ task.client + '">' + response.name + '</a>'
-                });
-                
-                getNestedJSON(baseUrl + '/properties/' + task.property_details).success(function(response) {
-                
-                    window.sideLoadedContent += '<span>Property Address: </span><a href="" class="property-details" data-url="' + baseUrl + '/properties/' + task.property_details + '" data-type="property">' + response.address + '</a></div>';
+                    //Get property details
+                    getNestedJSON(baseUrl + '/properties/' + task.property_details + '?format=json').success(function(response) {
+                    
+                        window.window[index]['propertyDetails'] = '<span>Property Address: </span><a href="" class="property-details" data-url="' + baseUrl + '/properties/' + task.property_details + '?format=json" data-type="property">' + response.address + '</a></div>';
 
-                    var user = getNestedJSON(baseUrl + '/users/' + task.assign_to).success(function(response){
+                        //Assigned to
+                        var user = getNestedJSON(baseUrl + '/users/' + task.assign_to + '?format=json').success(function(response){
 
-                        window.sideLoadedContent += '<h3 class="assign-to"><span>Assigned To: </span><a href="" data-url="' +baseUrl + '/users/' + task.assign_to + '" data-type="user">' + response.username + '</a>';
-                        
-                        $(window.sideLoadedContent).insertAfter('.tasks-container p.description');
-                
+                            window.assignedTo = '<h3 class="assign-to"><span>Assigned To: </span><a href="" data-url="' +baseUrl + '/users/' + task.assign_to + '" data-type="user">' + response.username + '</a>';
+                            
+                            li += window[index]['clientDetails'] + window[index]['propertyDetails'] + window.assignedTo;
+                            li += '</li>';
+                            $('.tasks-container').append(li);
+                            
+                    
+                        })
+                    
                     })
-                
-                
-                })
+                });
+
+
                 
                 
             });
@@ -158,42 +165,48 @@ $(document).ready(function () {
             createModal();
         }
 
-        var content = '<img src="/img/ajax-loader.gif">';
+        var content = '<img src="../img/ajax-loader.gif">';
 
         $('.modal-wrapper').removeClass('hidden');
         //Pull content
-        var url = $('a[data-url]').attr('data-url'), request = requestObject(url);
+        var el = $(this);
+        var url = el.attr('data-url'), request = requestObject(url);
     
         //Update Modal
         request.success(function (response) {
-            
-            
-            var type = $('a[data-type]').attr('data-type'), content, title;
+            var type = el.attr('data-type'), content, title;
             
             switch (type) {
                     
                 case "client":
                     title = response.name;
-                    content = '<h3 class="client-email"><span>Client Email: </span>' + response.email + '</h3>';
-                    content += '<h3 class="client-phone"><span>Client Phone: </span>' + response.phone + '</h3></li>';
+                    // content = '<h3 class="client-email"><span>Client Email: </span>' + response.email + '</h3>';
+                    content = '<h3 class="client-phone"><span>Client Phone: </span>' + response.phone + '</h3></li>';
                 
                     break;
 
                 case "property":
-                    title = response.address;
-//                    content = '<h2 class="address">' + property.address + '</h2>';
-                    
-                    var client = getNestedJSON(response.client);
-                    content = '<h3 class="client"><a href="" data-url="' + response.client + '" data-type="client"><span>Client Name: </span>' + client.name + '</a>';
 
-                    content += '<h3 class="land-ref-number"><span>Land Reference Number: </span>' + response.land_ref_number + '</h3>';
-                    content += '<h3 class="terms-of-reference"><span>Terms of Reference: </span>' + response.terms_of_reference + '</h3>';
+                    var client = response.client;
+                    
+                    getNestedJSON(baseUrl + '/clients/' + response.client + '?format=json').success(function(res) {
+                        title = response.address;
+
+                        content = '<h3 class="client"><span>Client Name: </span>' + res.name + '</h3>';
+
+                        content += '<h3 class="land-ref-number"><span>Land Reference Number: </span>' + response.land_ref_number + '</h3>';
+                        content += '<h3 class="terms-of-reference"><span>Terms of Reference: </span>' + response.terms_of_reference + '</h3>';
+                        $('.modal').append('<h2>' + title + '</h2>').append(content);
+                        return;
+                        
+                    });
+                    return;
 
                     break;
                 
                 case "user":
                     title = response.username;
-                    content = '<h3 class="client-email"><span>Client Email: </span>' + response.email + '</h3>';
+                    content = '<h3 class="client-email"><span>User Email: </span>' + response.email + '</h3>';
                     break;
                     
             }

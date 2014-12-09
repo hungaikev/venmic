@@ -15,13 +15,13 @@ import dj_database_url
 SECRET_KEY = '805g&ncc+v@g0q7-o9m2@1jftvkan!6qz4)t-l63tf_!lp+t+u'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'bootcamp1',                      # Or path to database file if using sqlite3.
+        'NAME': 'bootcamp10',                      # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
         'USER': 'root',
         'PASSWORD': 'root',
@@ -102,7 +102,7 @@ LOCALE_PATHS = (PROJECT_DIR.child('locale'), )
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
-STATIC_ROOT = ("/root/www/static")
+STATIC_ROOT = ("/www/venmic/static")
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (

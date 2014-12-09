@@ -15,6 +15,7 @@ from django.contrib.auth.models import User, Group
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from rest_framework import viewsets
+from rest_framework import generics
 
 
 
@@ -229,6 +230,11 @@ class TaskViewSet(viewsets.ModelViewSet):
 	"""API endpoint that allows clients to be viewed or edited."""
 	queryset = Task.objects.all()
 	serializer_class = TaskSerializer
+
+	def get_queryset(self):
+		"""This should return a list of the currently authenticated user."""
+		user = self.request.user
+		return Task.objects.filter(assign_to=user)
 
 
 

@@ -8,7 +8,7 @@
             <div class="content">
                 <h1>Tasks <img class="ajax-indicator hidden" src="img/ajax-loader.gif"></h1>
                 <hr>
-                <a href="/tasks/newtask" class="button no-fill"><span>+</span>Add Task</a>
+                <!-- <a href="/tasks/newtask" class="button no-fill"><span>+</span>Add Task</a> -->
                 <ul class="tasks-container">
                 </ul>
             </div>
@@ -18,7 +18,7 @@
         
         <script>
             $(document).ready(function(){
-                getTasks('http://venmicconsultants.com/api/tasks/?format=json');
+                getTasks('http://127.0.0.1:8000/api/tasks/?format=json');
             });
         </script>
 {% endblock %}
