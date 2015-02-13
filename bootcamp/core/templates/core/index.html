@@ -12,7 +12,6 @@
 		<link rel="shortcut icon" href="" />
 		<link rel="stylesheet" href="{{ STATIC_URL }}assets/css/foundation.css" />
 		<link rel="stylesheet" href="{{ STATIC_URL }}assets/font-awesome/css/font-awesome.css" />
-		<link rel="stylesheet" href="{{ STATIC_URL }}assets/js/slick-master/slick/slick.css" />
 		<link rel="stylesheet" href="{{ STATIC_URL }}assets/js/pace/themes/pace-theme-center-radar.css" />
 		<link rel="stylesheet" href="{{ STATIC_URL }}assets/css/venmic.css" />
 		<script src="{{ STATIC_URL }}assets/js/vendor/jquery.js"></script>
@@ -127,7 +126,7 @@
 						<ul class="social">
 							<li><i class="fa fa-facebook"></i></li>
 							<li><i class="fa fa-google-plus"></i></li>
-							<li><i class="fa fa-twitter"></i></li></li>
+							<li><i class="fa fa-twitter"></i></li>
 						</ul>
 					</div>
 				</div>    
@@ -137,9 +136,24 @@
 		<script src="{{ STATIC_URL }}assets/js/jquery-validation/dist/jquery.validate.min.js"></script>
 		<script src="{{ STATIC_URL }}assets/js/classie/classie.js"></script>
 		<script src="{{ STATIC_URL }}assets/js/pace/pace.min.js"></script>
-		<script src="{{ STATIC_URL }}assets/js/venmic-login.js"></script>
+		<script src="{{ STATIC_URL }}assets/js/venmic.js"></script>
 		<script>
-			$(document).foundation();
+		$(function(){
+			paceOptions = {
+				ajax: false,
+				document: true,
+				eventLag: true,
+				elements: false
+			};
+
+			var loadCover = document.getElementById( 'loader-div' );
+			Pace.on("done", function(){
+		    	setTimeout(function(){
+		    		$(loadCover).fadeOut();
+		    	},400);
+			});
+		});
+		$(document).foundation();
 		</script>
 	</body>
-</html>		
+</html>

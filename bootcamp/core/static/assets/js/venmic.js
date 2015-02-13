@@ -1,9 +1,5 @@
 $(function(){
 
-	$('.vs-info').slick({
-		arrows: false,
-    });
-
     $("#contact-form").validate({
     	onkeyup: false,
 		rules: {
@@ -23,22 +19,7 @@ $(function(){
 			contact_message: "Your Message is required."
 		},
 		submitHandler: function(form){
-			var postData = $(form).serializeArray();
-		    var formURL = $(form).attr("action");
-		    var formType = $(form).attr("method");
-
-		    $.ajax({
-		        url : formURL,
-		        type: formType,
-		        data : postData,
-		        success:function(data, textStatus, jqXHR){
-		        	
-		        },
-		        error: function(jqXHR, textStatus, errorThrown){
-
-		        }
-		    });
-			return false;
+			$(form).submit();
 		}
 	});
 
@@ -140,38 +121,12 @@ $(function(){
 		}else{
 			classie.remove(element,'active');
 		}
-	}
+	};
 
 	var navBarSmall = document.getElementById('nav-bar-small');
 	var navUlSmall = document.getElementById('nav-ul-small');
 	$(navBarSmall).on('click', function(e){
 		classie.toggle(element,'active-small');
     	classie.toggle(navUlSmall, 'hide');
-	});
-
-	
-
-	var nextButton = document.getElementById( 'next-button' );
-	$(nextButton).on('click', function(){
-		$('.vs-info').slickNext();
-	});
-
-	var previousButton = document.getElementById( 'previous-button' );
-	$(previousButton).on('click', function(){
-		$('.vs-info').slickPrev();
-	});
-
-	paceOptions = {
-		ajax: false,
-		document: true,
-		eventLag: true,
-		elements: false
-	};
-
-	var loadCover = document.getElementById( 'loader-div' );
-	Pace.on("done", function(){
-    	setTimeout(function(){
-    		$(loadCover).fadeOut();
-    	},400);
 	});
 });
